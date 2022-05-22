@@ -16,10 +16,8 @@ fs.open(path.join(__dirname, 'text.txt'), 'w', (err) => {
 
 rl.on('line', (data) => {
    if(data.toString() === 'exit') {
-      
       rl.close()
    } else {
-          
       fs.appendFile(path.join(__dirname, 'text.txt'), `${data}\n`, (err) => {
          if(err) throw err;
       });
@@ -29,10 +27,6 @@ rl.on('line', (data) => {
 rl.on('close', () => {
    console.log('Good Bye!');
  })
-
-rl.on('SIGINT', () => {
-  rl.close()
-});
 
 
 
