@@ -1,32 +1,29 @@
 const fs = require('fs');
+const path = require('path');
 const process = require('process');
-const { stdin, stdout } = process;
 const readline = require('node:readline');
-
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-stdout.write(`Hello, type your text!\n`);
+rl.output.write(`Hello, type your text!\n`);
 
-fs.open('02-write-file/mynotes.txt', 'w', (err) => {
+fs.open(path.join(__dirname, 'text.txt'), 'w', (err) => {
         if(err) throw err;
 });
 
 rl.on('line', (data) => {
    if(data.toString() === 'exit') {
+      
       rl.close()
-
    } else {
           
-      fs.appendFile('02-write-file/mynotes.txt', `${data}\n`, (err) => {
+      fs.appendFile(path.join(__dirname, 'text.txt'), `${data}\n`, (err) => {
          if(err) throw err;
       });
-
    }
-   
 })
 
 rl.on('close', () => {
