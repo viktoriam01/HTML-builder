@@ -3,6 +3,8 @@ const folderName = path.join(__dirname, 'files');
 const copyFolderName = path.join(__dirname, 'files-copy');
 const { mkdir, readdir, copyFile, unlink } = require('fs/promises');
 
+// By promises
+
 const copyDir = () => mkdir(copyFolderName, { recursive: true });
 
 const cleanFolder = () => {
@@ -28,6 +30,8 @@ copyDir()
 .then(() => copyFiles())
 .catch(error => {throw error});
 
+
+// By callbacks
 
 // fs.mkdir(copyFolderName, { recursive: true }, (err) => {
 //     if (err) {
